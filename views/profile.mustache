@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+{{>head}}
+
+<body class="container-fluid">
+	<nav class="navbar row navbar-expand-lg navbar-dark bg-primary">
+		  <a class="navbar-brand" href="/"><b>CRYPTO</b>RIDE</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+
+		  <div class="collapse navbar-collapse"  id="navbarColor01">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+		        <a class="nav-link" href="/profile/{{id}}">Profile <span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="/mapRoute/{{id}}">Route</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="/showDrives/{{id}}">Your Drive</a>
+		      </li>
+		    </ul>
+		  </div>
+
+	</nav>
+	<div class="container">
+	<div class="row">
+
+		<div class="col" style="text-align:center;margin-bottom:48px">
+			<h1>{{title}}</h1>
+			<hr />
+			<div style="background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px">
+					KOMODO Interface
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+<div class="row">
+
+	<div class="col" style="text-align:center;margin-bottom:48px">
+		<form class="" action="index.html" method="post">
+			<div class="form-group row">
+				<label for="" class="col-sm-4 col-form-label" style="text-align:right;">Asset Chain : </label>
+				<div class="col-sm-6">
+					<input type="text" name="name" class="form-control"  placeholder="Enter Name" >
+				</div>
+			</div>
+			<button type="submit" name="button">Submit</button>
+		</form>
+	</div>
+</div>
+</div>
+
+
+
+  <!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.
+  NOTE: These should be minified in a build script -->
+  <script type="text/javascript" src="/js/jquery.js"></script>
+
+  <!-- For file uploading. Remove if file upload not necessry -->
+  <script type="text/javascript" src="/js/dropzone.js"></script>
+
+  <!-- Turbo CDN. Better to use CDN than to store locally. -->
+  <script type="text/javascript" src="https://cdn.turbo360-dev.com/dist/turbo.min.js"></script>
+
+  <!-- Your app specific code -->
+  <script type="text/javascript" src="/js/app.js"></script>
+</body>
+</html>
