@@ -26,13 +26,21 @@ router.post('/',(req, res) => {
 			db.collection('driver').find(p).toArray((err, results) => {
 						if (err) return console.log(err)
 						else {
-							// res.send(results);
-							// console.log(results[0]._id);
-							// db.disconnectDB()
-							let rediret = '/profile/'+results[0]._id;
-							res.redirect(rediret)
+							if(results[0]){
+								let rediret = '/profile/driver/'+results[0]._id;
+								res.redirect(rediret)
+							}
+							else{
+								db.collection('rider').find(p).toArray((err, results) => {
+											if (err) return console.log(err)
+											else {
+												let rediret = '/profile/rider/'+results[0]._id;
+												res.redirect(rediret)
+											}
+							})
 						}
-							});
+						}
+							})
 
 	});
 	// mongo.disconnectDB()

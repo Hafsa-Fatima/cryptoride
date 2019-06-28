@@ -67,6 +67,7 @@ const drive = require('./routes/drive')
 const login = require('./routes/login')
 const profile = require('./routes/profile')
 const showDrives = require('./routes/yourDrives')
+const chooseDrive = require('./routes/chooseDrive')
 
 // set routes
 app.use('/', index)
@@ -74,6 +75,7 @@ app.use('/drive', drive)
 app.use('/login', login)
 app.use('/profile', profile)
 app.use('/showDrives',showDrives )
+app.use('/chooseDrive',chooseDrive )
 app.use('/api', api) // sample API Routes
 
 

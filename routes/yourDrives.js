@@ -37,6 +37,54 @@ router.get('/:id', (req, res) => {
 
 })
 
+router.get('/rides/:id', (req, res) => {
+	let data ={
+		title:'Your Drives',
+		id:req.params.id,
+
+	}
+	mongo.connectToServer(()=>{
+		const db = mongo.getDb()
+		new Promise((resolve,reject)=>{
+			db.collection('driveEvent').find({availableseats:{$gt:0},rider:{ $not:{$elemMatch:{r_id:req.params.id}}}}).toArray((err, results) => {
+						if (err) reject(err)
+						else {
+							resolve(results);
+							// console.log(results);
+								}
+							})
+						}).then((myresult)=>{
+								new Promise((resolve,reject)=>{
+									db.collection('driveEvent').find({rider:{ $elemMatch:{r_id:req.params.id}}}).toArray((err, allmyride) => {
+									if (err) reject(err);
+									else{
+										resolve(allmyride);
+									}
+							})
+							// res.render('showDrive',{myresult,data})
+							// res.send({myresult,data})
+							}).then((allmyride)=>{
+
+								if(allmyride.length != 0){
+									let p={myresult,data,allmyride}
+									res.render('showride',p)
+									// console.log(p)
+								}else{
+									let p={myresult,data}
+									res.render('showride',p)
+									// console.log(p)
+								}
+
+							}).catch((err)=>{
+								console.log(err);
+							})
+						}
+					)
+					.catch((err)=>console.log(err))
+		})
+
+})
+
 router.get('/addDrive/:id',(req, res)=>{
 	const data ={
 		title:'Your Drives',
@@ -49,7 +97,8 @@ router.post('/addDrive/:id',(req, res) => {
 	// res.send(req.body.email);
 	var p= req.body ;
 	p = Object.assign({
-		driverid: req.params.id
+		driverid: req.params.id,
+		availableseats: Number(req.body.carseat)
 	},p)
 	// res.send(p);
 		mongo.connectToServer(()=>{

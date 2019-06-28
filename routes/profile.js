@@ -8,7 +8,7 @@ const mongo = require('../models/dbdriver')
 	Data is rendered using the Mustache templating engine. For more
 	information, view here: https://mustache.github.io/#demo */
 
-router.get('/:id', (req, res) => {
+router.get('/driver/:id', (req, res) => {
 	let data ={
 		title:'Profile',
 		id:req.params.id,
@@ -16,8 +16,16 @@ router.get('/:id', (req, res) => {
 	res.render('profile',data)
 })
 
+router.get('/rider/:id', (req, res) => {
+	let data ={
+		title:'Profile',
+		id:req.params.id,
+	}
+	res.render('profilerider',data)
+})
+
 router.post('/',(req, res) => {
-	// res.send(req.body.email);
+
 	var p= {
 		email: req.body.email,
 		password: req.body.passw,
@@ -33,6 +41,35 @@ router.post('/',(req, res) => {
 	});
 	// mongo.disconnectDB()
 	// res.redirect('/profile')
+})
+
+router.get('/:id/getinfo',(req,res)=>{
+	var request = require('request');
+
+	var headers = {
+	    'content-type': 'text/plain;'
+	};
+
+	var dataString = '{"jsonrpc": "1.0", "id":"curltest", "method": "getwalletinfo", "params": [] }';
+
+	var options = {
+	    url: 'http://127.0.0.1:'+process.env.KOMODO_PORT+'/',
+	    method: 'POST',
+	    headers: headers,
+	    body: dataString,
+	    auth: {
+	        'user': process.env.KOMODO_USER,
+	        'pass': process.env.KOMODO_PASSWORD,
+	    }
+	};
+
+	function callback(error, response, body) {
+	    if (!error && response.statusCode == 200) {
+	        res.send(body);
+	    }
+	}
+
+	request(options, callback);
 })
 // /*  This route render json data */
 // router.get('/json', (req, res) => {

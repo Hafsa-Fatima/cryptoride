@@ -28,6 +28,7 @@ router.post('/',(req, res) => {
 			db.collection('driver').insertOne(p,(err, results) => {
 						if (err) return console.log(err)
 								console.log("inserted one item");
+								res.redirect('/login')
 								// mongo.disconnectDB()
 							});
 
