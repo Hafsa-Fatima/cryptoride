@@ -18,7 +18,7 @@ var MongoClient = require( 'mongodb' ).MongoClient;
 var _db;
 module.exports = {
   connectToServer: function( callback ) {
-    MongoClient.connect( "mongodb+srv://hafsa95:asfah@hafsacluster-vencl.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true }, function( err, client ) {
+    MongoClient.connect( process.env.MONGO_DBURI,{ useNewUrlParser: true }, function( err, client ) {
       _db = client.db("driver");
       return callback( err );
     } );
