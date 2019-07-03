@@ -12,14 +12,15 @@
 		  <div class="collapse navbar-collapse"  id="navbarColor01">
 		    <ul class="navbar-nav mr-auto">
 		      <li class="nav-item active">
-		        <a class="nav-link" href="/profile/{{id}}">Profile <span class="sr-only">(current)</span></a>
+		        <a class="nav-link" href="/profile/{{data.id}}">Profile <span class="sr-only">(current)</span></a>
 		      </li>
+
 		      <li class="nav-item">
-		        <a class="nav-link" href="/mapRoute/{{id}}">Route</a>
+		        <a class="nav-link" href="/showDrives/{{data.id}}">Your Drive</a>
 		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="/showDrives/{{id}}">Your Drive</a>
-		      </li>
+					<li class="nav-item">
+						<a class="nav-link" href="/">Signout</a>
+					</li>
 		    </ul>
 		  </div>
 
@@ -30,26 +31,32 @@
 		<div class="col" style="text-align:center;margin-bottom:48px">
 			<h1>Profile</h1>
 			<hr />
-			<div style="background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px">
-					KOMODO Interface
-			</div>
+
 		</div>
 	</div>
 </div>
 <div class="container">
-<div class="row">
+<div class="row" style="font-size: larger;">
 
-	<div class="col" style="text-align:center;margin-bottom:48px">
-		<form class="" action="index.html" method="post">
-			<div class="form-group row">
-				<label for="" class="col-sm-4 col-form-label" style="text-align:right;">Asset Chain : </label>
-				<div class="col-sm-6">
-					<input type="text" name="name" class="form-control"  placeholder="Enter Name" >
-				</div>
-			</div>
-			<button type="submit" class="btn btn-success btn-lg" name="button">Submit</button>
-		</form>
-	</div>
+									<div class="col-sm-6" style="text-align:right">
+										<strong>	Name : </strong>  {{result.name}}
+									</div>
+									<div class="col-sm-6" style="text-align:left">
+										<strong>	Email :</strong>  {{result.email}}
+									</div>
+									<div class="col-sm-6" style="text-align:right">
+										<strong>	Car License : </strong>  {{result.carliciense}}
+									</div>
+									<div class="col-sm-6" style="text-align:left">
+										<strong>	Car Brand :</strong>  {{result.carbrand}}
+									</div>
+									<div class="col-sm-6" style="text-align:right">
+										<strong>	Car Color :</strong>  {{result.color}}
+									</div>
+									<div class="col-sm-6" style="text-align:left">
+										<strong>	Wallet Balance :</strong>  <span class="text-success">{{balance}}</span> coins
+									</div>
+
 </div>
 </div>
 

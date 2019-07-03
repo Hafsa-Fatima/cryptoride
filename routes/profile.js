@@ -13,7 +13,61 @@ router.get('/driver/:id', (req, res) => {
 		title:'Profile',
 		id:req.params.id,
 	}
-	res.render('profile',data)
+
+	let p = {
+		_id: ObjectID(req.params.id)
+	}
+
+	mongo.connectToServer(()=>{
+		const db = mongo.getDb()
+		new Promise ((resolve,reject)=>{
+			db.collection('driver').find(p).toArray((err, results) => {
+						if (err) reject(err)
+						else resolve(results[0])
+							})
+		}).then((result)=>{
+
+
+				var request = require('request');
+
+				var headers = {
+				    'content-type': 'text/plain;'
+				};
+
+				var dataString = '{"jsonrpc": "1.0", "id":"curltest", "method": "getwalletinfo", "params": [] }';
+
+				var options = {
+				    url: 'http://127.0.0.1:'+process.env.KOMODO_PORT+'/',
+				    method: 'POST',
+				    headers: headers,
+				    body: dataString,
+				    auth: {
+				        'user': process.env.KOMODO_USER,
+				        'pass': process.env.KOMODO_PASSWORD,
+				    }
+				};
+
+				function callback(error, response, body) {
+				    if (!error && response.statusCode == 200) {
+				        // res.render('profile',{data,a,result})
+								let a = JSON.parse(body)
+								let balance = a.result.balance + a.result.unconfirmed_balance
+								res.render('profile',{data,balance,result})
+
+				    }
+				}
+
+				request(options, callback);
+
+
+
+
+		}).catch((err)=>{
+			console.log(err)
+		})
+
+});
+
 })
 
 router.get('/rider/:id', (req, res) => {
@@ -26,15 +80,55 @@ router.get('/rider/:id', (req, res) => {
 	}
 	mongo.connectToServer(()=>{
 		const db = mongo.getDb()
-		db.collection('rider').find(p).toArray((err, results) => {
-			if(err) console.log(err);
-			else {
-				let v = results[0]
-				let p = {data,v}
-				console.log(p);
-				res.render('profilerider',p)
-			}
+		new Promise((resolve,reject)=>{
+			db.collection('rider').find(p).toArray((err, results) => {
+			if(err) reject(err);
+			else resolve(results[0])
 		})
+	}).then((result)=>{
+
+		var request = require('request');
+
+		var headers = {
+				'content-type': 'text/plain;'
+		};
+
+		var dataString = '{"jsonrpc": "1.0", "id":"curltest", "method": "getwalletinfo", "params": [] }';
+
+		var options = {
+				url: 'http://127.0.0.1:'+process.env.KOMODO_PORT+'/',
+				method: 'POST',
+				headers: headers,
+				body: dataString,
+				auth: {
+						'user': process.env.KOMODO_USER,
+						'pass': process.env.KOMODO_PASSWORD,
+				}
+		};
+
+		function callback(error, response, body) {
+				if (!error && response.statusCode == 200) {
+						// res.render('profile',{data,a,result})
+						let v = result
+
+						let a = JSON.parse(body)
+						let balance = a.result.balance + a.result.unconfirmed_balance
+							let p = {data,v,balance}
+						// console.log(p);
+						res.render('profilerider',p)
+						// res.send(p)
+						// res.render('profile',{data,balance,result})
+
+				}
+		}
+
+		request(options, callback);
+
+
+
+	}).catch((err)=>{
+		console.log(err)
+	})
 	})
 })
 

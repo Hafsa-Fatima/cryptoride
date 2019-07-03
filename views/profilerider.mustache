@@ -15,11 +15,11 @@
 		        <a class="nav-link" href="/profile/rider/{{data.id}}">Profile <span class="sr-only">(current)</span></a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="/mapRoute/{{data.id}}?name={{v.name}}">Route</a>
-		      </li>
-		      <li class="nav-item">
 		        <a class="nav-link" href="/showDrives/rides/{{data.id}}?name={{v.name}}">Your Drive</a>
 		      </li>
+					<li class="nav-item">
+						<a class="nav-link" href="/">Signout</a>
+					</li>
 		    </ul>
 		  </div>
 	</nav>
@@ -29,25 +29,24 @@
 		<div class="col" style="text-align:center;margin-bottom:48px">
 			<h1>{{data.title}}</h1>
 			<hr />
-			<div style="background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px">
-					KOMODO Interface
-			</div>
+
 		</div>
 	</div>
 </div>
 <div class="container">
-<div class="row">
+<div class="row" style="font-size: larger;">
+	<div class="col-sm-6" style="text-align:right">
+		<strong>	Name : </strong>  {{v.name}}
+	</div>
+	<div class="col-sm-6" style="text-align:left">
+		<strong>	Email :</strong>  {{v.email}}
+	</div>
+	<div class="col-sm-6" style="text-align:right">
+		<strong>	Phone number : </strong>  {{v.phonenumber}}
+	</div>
 
-	<div class="col" style="text-align:center;margin-bottom:48px">
-		<form class="" action="index.html" method="post">
-			<div class="form-group row">
-				<label for="" class="col-sm-4 col-form-label" style="text-align:right;">Asset Chain : </label>
-				<div class="col-sm-6">
-					<input type="text" name="name" class="form-control"  placeholder="Enter Name" >
-				</div>
-			</div>
-			<button type="submit" class="btn btn-success btn-lg" name="button">Submit</button>
-		</form>
+	<div class="col-sm-6" style="text-align:left">
+		<strong>	Wallet Balance :</strong>  <span class="text-success">{{balance}}</span> coins
 	</div>
 </div>
 </div>
