@@ -3,7 +3,7 @@ const turbo = require('turbo360')({site_id: process.env.TURBO_APP_ID})
 const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
 const router = vertex.router()
 const mongo = require('../models/dbdriver')
-
+ObjectID = require('mongodb').ObjectID
 /*  This is the home route. It renders the index.mustache page from the views directory.
 	Data is rendered using the Mustache templating engine. For more
 	information, view here: https://mustache.github.io/#demo */
@@ -21,7 +21,21 @@ router.get('/rider/:id', (req, res) => {
 		title:'Profile',
 		id:req.params.id,
 	}
-	res.render('profilerider',data)
+	let p = {
+		_id: ObjectID(req.params.id)
+	}
+	mongo.connectToServer(()=>{
+		const db = mongo.getDb()
+		db.collection('rider').find(p).toArray((err, results) => {
+			if(err) console.log(err);
+			else {
+				let v = results[0]
+				let p = {data,v}
+				console.log(p);
+				res.render('profilerider',p)
+			}
+		})
+	})
 })
 
 router.post('/',(req, res) => {

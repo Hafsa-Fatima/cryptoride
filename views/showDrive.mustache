@@ -36,12 +36,74 @@
 </div>
 <div class="container">
 <div class="row" style="text-align:center;">
+{{#transferride}}
+	<div class="card text-white bg-info mb-3" style="width:100em; text-align:center" >
+  <div class="card-header"><strong > You have Riders !! select Map to pick them</strong> <button type="button"  class="btn btn-success btn-lg" name="button"><a style="color:white;" href="/showDrives/delete/{{_id}}?driverid={{data.id}}">Cancel My Drive</a></button>
+		<button type="button"  class="btn btn-success btn-lg" name="button"><a style="color:white;" href="https://www.google.com/maps/dir/?api=1&orign={{locationfrom}}&destination={{locationto}}&travelmode=driving&waypoints=({{locationfrom}}{{#rider}}{{^transfer}}|{{address}}{{/transfer}}{{/rider}})&dir_action=navigate" target="_blank">Map</a></button>
+</div>
+
+	<div class="card-body">
+		<h5 class="card-title">
+			<div class="row">
+						<div class="col-sm-6" style="text-align:right">
+							<strong>	Start From : </strong>  {{locationfrom}}
+						</div>
+						<div class="col-sm-6" style="text-align:left">
+							<strong>	To Destination :</strong>  {{locationto}}
+						</div>
+			</div>
+
+			</h5>
+			<div class="card-text">
+		<h5 >
+			<div class="row">
+									<div class="col-sm-6" style="text-align:right">
+										<strong>	At Time : </strong>  {{time}}
+									</div>
+									<div class="col-sm-6" style="text-align:left">
+										<strong>	Cost :</strong>  {{cost}} coins
+									</div>
+						</div></h5>
+					</div>
+		{{#rider}}
+			{{^transfer}}
+			<div class="row" >
+				<div class="col-sm-6" style="text-align:right;">Name : {{name}}</div>
+				<div class="col-sm-6" style="text-align:left;">OPT : {{opt}}</div>
+			</div>
+			{{/transfer}}
+		{{/rider}}
+  </div>
+</div>
+{{/transferride}}
 {{#myresult}}
 	<div class="card text-white bg-dark mb-3" style="width:100em; text-align:center" >
-  <div class="card-header">Destination : {{locationto}}</div>
+  <div class="card-header">Destination : {{locationto}}
+		<button type="button"  class="btn btn-success btn-lg" name="button"><a style="color:white;" href="/showDrives/delete/{{_id}}?driverid={{data.id}}">Cancel My Drive</a></button>
+	</div>
   <div class="card-body">
-    <h5 class="card-title">Start : {{locationfrom}}</h5>
-    <p class="card-text">At : {{time}}</p>
+		<h5 class="card-title">
+			<div class="row">
+						<div class="col-sm-6" style="text-align:right">
+							<strong>	Start From : </strong>  {{locationfrom}}
+						</div>
+						<div class="col-sm-6" style="text-align:left">
+							<strong>	To Destination :</strong>  {{locationto}}
+						</div>
+			</div>
+
+			</h5>
+			<div class="card-text">
+		<h5 >
+			<div class="row">
+									<div class="col-sm-6" style="text-align:right">
+										<strong>	At Time : </strong>  {{time}}
+									</div>
+									<div class="col-sm-6" style="text-align:left">
+										<strong>	Cost :</strong>  {{cost}} coins
+									</div>
+						</div></h5>
+					</div>
   </div>
 </div>
 {{/myresult}}

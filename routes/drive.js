@@ -18,10 +18,12 @@ router.get('/', (req, res) => {
 router.post('/',(req, res) => {
 	// res.send(req.body.email);
 	var p= {
-		name:req.body.dname,
+		name:req.body.name,
 		email: req.body.email,
 		password: req.body.passw,
-		carliciense: req.body.carnumber
+		carliciense: req.body.carnumber,
+		carcolor: req.body.carcolor,
+		carbrand: req.body.carbrand,
 	};
 		mongo.connectToServer(()=>{
 			const db = mongo.getDb()

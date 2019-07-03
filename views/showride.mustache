@@ -15,10 +15,10 @@
 						<a class="nav-link" href="/profile/rider/{{data.id}}">Profile <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/mapRoute/{{data.id}}">Route</a>
+						<a class="nav-link" href="/mapRoute/{{data.id}}?name={{data.name}}">Route</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="/showDrives/rides/{{data.id}}">Your Drive</a>
+						<a class="nav-link" href="/showDrives/rides/{{data.id}}?name={{data.name}}">Your Drive</a>
 					</li>
 		    </ul>
 		  </div>
@@ -36,25 +36,86 @@
 <div class="container">
 <div class="row" style="text-align:center;">
 	{{#allmyride}}
-		<div class="card text-white bg-dark mb-3" style="width:100em; text-align:center" >
-	  <div class="card-header card-title">Destination : {{locationto}}
+		<div  class="card border-success mb-3 card bg-light" style="width:100em; text-align:center" >
+	  <div class="card-header card-title"><strong class="text-success">Ride Successfully Selected</strong> &nbsp;
 			<button type="button" style="color:white;" class="btn btn-danger btn-lg" name="button"><a style="color:white;" href="/chooseDrive/delete/{{_id}}?driverid={{driverid}}&riderid={{data.id}}">Cancel Ride</a></button>
+			<h5><strong> CarLicense : </strong> {{carliciense}} &nbsp;</h5>
 		</div>
 	  <div class="card-body">
-	    <h5 class="card-title">Start : {{locationfrom}}</h5>
-	    <p class="card-text">At : {{time}}</p>
+	    <h5 class="card-title">
+				<div class="row">
+							<div class="col-sm-6" style="text-align:right">
+								<strong>	Start From : </strong>  {{locationfrom}}
+							</div>
+							<div class="col-sm-6" style="text-align:left">
+								<strong>	To Destination :</strong>  {{locationto}}
+							</div>
+				</div>
+
+				</h5>
+	    <h5 class="card-text">
+				<div class="row">
+										<div class="col-sm-6" style="text-align:right">
+											<strong>	At Time : </strong>  {{time}}
+										</div>
+										<div class="col-sm-6" style="text-align:left">
+											<strong>	Cost :</strong>  {{cost}} coins
+										</div>
+							</div></h5>
+
+			<div class="card-text">
+				<div class="alert alert-dismissible alert-success">
+  			<button class="close" type="button" data-dismiss="alert">&times;</button>
+				   Please verify One time Pincode given from Driver once the car arrives and Pay
+				</div>
+
+					<form class="" action="/chooseDrive/verify/{{data.id}}?_id={{_id}}" method="post">
+				<div class="row">
+							<div class="col-sm-6" style="text-align:right">
+								<input size="6" type="text" name="optnumber" class="form-control" aria-describedby="emailHelp" placeholder="Enter opt" >
+							</div>
+							<div class="col-sm-6" style="text-align:left">
+									<button class="btn btn-success btn-lg" type="submit" name="button">Verify and Pay {{cost}} Coins </button>
+							</div>
+
+				</div>
+					</form>
+
+
+				<!-- {{#rider}}
+					OPT: {{opt}}
+				{{/rider}} -->
+			</div>
 	  </div>
 	</div>
 	{{/allmyride}}
 {{#myresult}}
-	<div class="card text-white bg-dark mb-3" style="width:100em; text-align:center" >
-  <div class="card-header card-title">Destination : {{locationto}}
-		<button type="button"  class="btn btn-success btn-lg" name="button"><a style="color:white;" href="/chooseDrive/{{_id}}?driverid={{driverid}}&riderid={{data.id}}">Choose Ride</a></button>
-	</div>
-  <div class="card-body">
-    <h5 class="card-title">Start : {{locationfrom}}</h5>
-    <p class="card-text">At : {{time}}</p>
-  </div>
+	<div class="card text-white bg-primary mb-3" style="width:100em; text-align:center" >
+  <h5 class="card-header card-title"><strong>Destination :</strong> {{locationto}} &nbsp;
+		<button type="button"  class="btn btn-success btn-lg" name="button"><a style="color:white;" href="/chooseDrive/{{_id}}?driverid={{driverid}}&riderid={{data.id}}&name={{data.name}}">Choose Ride</a></button>
+	</h5>
+	<h5 class="card-title">
+		<div class="row">
+					<div class="col-sm-6" style="text-align:right">
+						<strong>	Start From : </strong>  {{locationfrom}}
+					</div>
+					<div class="col-sm-6" style="text-align:left">
+						<strong>	To Destination :</strong>  {{locationto}}
+					</div>
+		</div>
+
+		</h5>
+		<div class="card-text">
+	<h5 >
+		<div class="row">
+								<div class="col-sm-6" style="text-align:right">
+									<strong>	At Time : </strong>  {{time}}
+								</div>
+								<div class="col-sm-6" style="text-align:left">
+									<strong>	Cost :</strong>  {{cost}} coins
+								</div>
+					</div></h5>
+				</div>
 </div>
 {{/myresult}}
 	</div>

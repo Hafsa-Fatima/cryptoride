@@ -18,7 +18,7 @@
 		        <a class="nav-link" href="/mapRoute/{{data2.riderid}}">Route</a>
 		      </li>
 		      <li class="nav-item active">
-		        <a class="nav-link" href="/showDrives/{{data2.riderid}}">Your Drive</a>
+		        <a class="nav-link" href="/showDrives/{{data2.riderid}}?name={{data2.name}}">Your Drive</a>
 		      </li>
 		    </ul>
 		  </div>
@@ -27,16 +27,33 @@
 
 			<div class="container">
 			<div class="row">
-				<form class="container" action="confirm/{{data2.riderid}}?_id={{data2._id}}" method="post" style=" margin-top:4em;">
+				<form class="container" action="confirm/{{data2.riderid}}?_id={{data2._id}}&name={{data2.name}}&carliciense={{myresult.carliciense}}" method="post" style=" margin-top:4em;">
 					<fieldset class="card border-primary bg-light" >
 						<h1 class="card-header" style="text-align:center;">Drive Information</h1>
-
+						<div class="form-group row">
+				      <label for="staticEmail" class="col-sm-4 col-form-label" style="text-align:right;">Name : </label>
+				      <div class="col-sm-6" style="text-align:left;">
+								{{myresult.name}}
+					     </div>
+				    </div>
+						<div class="form-group row">
+				      <label for="staticEmail" class="col-sm-4 col-form-label" style="text-align:right;">Car Brand : </label>
+				      <div class="col-sm-6" style="text-align:left;">
+								{{myresult.carbrand}}
+			      </div>
+				    </div>
 					<div class="form-group row">
 			      <label for="staticEmail" class="col-sm-4 col-form-label" style="text-align:right;">Seats : </label>
 			      <div class="col-sm-6">
 			        <input type="number" name="seats"  class="form-control"  placeholder="Enter number of seats" >
 			      </div>
 			    </div>
+					<div class="form-group row">
+						<label for="staticEmail" class="col-sm-4 col-form-label" style="text-align:right;">Pick up Location : </label>
+						<div class="col-sm-6">
+							<input type="text" name="address"  class="form-control"  placeholder="Enter pick up address" >
+						</div>
+					</div>
 					<div class="form-group row">
 						<div class="col" style="text-align:center;">
 							<button type="submit" name="button" class="btn btn-primary btn-lg">Confirm</button>

@@ -26,10 +26,10 @@ router.get('/ride', (req, res) => {
 router.post('/ride',(req, res) => {
 	// res.send(req.body.email);
 	var p= {
-		name:req.body.dname,
+		name:req.body.name,
 		email: req.body.email,
 		password: req.body.passw,
-		carliciense: req.body.carnumber
+		phonenumber: req.body.pnumber
 	};
 		mongo.connectToServer(()=>{
 			const db = mongo.getDb()
