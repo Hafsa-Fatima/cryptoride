@@ -4,7 +4,7 @@
 
 <body class="container-fluid">
 	<nav class="navbar row navbar-expand-lg navbar-dark bg-primary">
-		  <a class="navbar-brand" href="/"><b>CRYPTO</b>RIDE</a>
+		  <a class="navbar-brand" href="/profile/driver/{{id}}"><b>CRYPTO</b>RIDE</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -12,7 +12,7 @@
 			<div class="collapse navbar-collapse"  id="navbarColor01">
 		    <ul class="navbar-nav mr-auto">
 		      <li class="nav-item ">
-		        <a class="nav-link" href="/profile/{{id}}">Profile </a>
+		        <a class="nav-link" href="/profile/driver/{{id}}">Profile </a>
 		      </li>
 		      <li class="nav-item active">
 		        <a class="nav-link" href="/showDrives/{{id}}">Your Drive<span class="sr-only">(current)</span></a>
@@ -33,31 +33,31 @@
 					<div class="form-group row">
 			      <label for="" class="col-sm-4 col-form-label" style="text-align:right;">Start Location : </label>
 			      <div class="col-sm-6">
-			        <input type="text" name="locationfrom" class="form-control"  placeholder="Enter Location address" >
+			        <input type="text" name="locationfrom" class="form-control"  placeholder="Enter Location address" required>
 			      </div>
 			    </div>
 					<div class="form-group row">
 			      <label for="" class="col-sm-4 col-form-label" style="text-align:right;">Destination Location : </label>
 			      <div class="col-sm-6">
-			        <input type="text" name="locationto" class="form-control"  placeholder="Enter Location address" >
+			        <input type="text" name="locationto" class="form-control"  placeholder="Enter Location address" required>
 			      </div>
 			    </div>
 					<div class="form-group row">
 			      <label for="" class="col-sm-4 col-form-label" style="text-align:right;">Time : </label>
 			      <div class="col-sm-6">
-			        <input type="datetime" name="time" class="form-control"  placeholder="Enter Time" >
+			        <input type="datetime" name="time" class="form-control"  placeholder="Enter Time" required>
 			      </div>
 			    </div>
 					<div class="form-group row">
 			      <label for="staticEmail" class="col-sm-4 col-form-label" style="text-align:right;">Available seats : </label>
 			      <div class="col-sm-6">
-			        <input type="number" name="carseat" class="form-control"  placeholder="Enter Available seats" >
+			        <input type="number" name="carseat" class="form-control"  placeholder="Enter Available seats" required>
 			      </div>
 			    </div>
 					<div class="form-group row">
 			      <label for="staticEmail" class="col-sm-4 col-form-label" style="text-align:right;">Choose Cost : </label>
 			      <div class="col-sm-6">
-			        <input type="text" name="costNumber" class="form-control"  placeholder="Enter amount of coins" >
+			        <input type="text" name="costNumber" class="form-control"  placeholder="Enter amount of coins" required>
 			      </div>
 			    </div>
 					<div class="form-group row">

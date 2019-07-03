@@ -4,7 +4,7 @@
 
 <body class="container-fluid">
 	<nav class="navbar row navbar-expand-lg navbar-dark bg-primary">
-		  <a class="navbar-brand" href="/"><b>CRYPTO</b>RIDE</a>
+		  <a class="navbar-brand" href="/profile/rider/{{data.id}}"><b>CRYPTO</b>RIDE</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -15,7 +15,7 @@
 		        <a class="nav-link" href="/profile/rider/{{data.id}}">Profile <span class="sr-only">(current)</span></a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="/showDrives/rides/{{data.id}}?name={{v.name}}">Your Drive</a>
+		        <a class="nav-link" href="/showDrives/rides/{{data.id}}?name={{v.name}}">Rides</a>
 		      </li>
 					<li class="nav-item">
 						<a class="nav-link" href="/">Signout</a>

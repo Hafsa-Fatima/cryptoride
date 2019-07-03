@@ -4,7 +4,7 @@
 
 <body class="container-fluid">
 	<nav class="navbar row navbar-expand-lg navbar-dark bg-primary">
-		  <a class="navbar-brand" href="#"><b>CRYPTO</b>RIDE</a>
+		  <a class="navbar-brand" href="/profile/driver/{{data.id}}"><b>CRYPTO</b>RIDE</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -12,7 +12,7 @@
 		  <div class="collapse navbar-collapse"  id="navbarColor01">
 		    <ul class="navbar-nav mr-auto">
 		      <li class="nav-item ">
-		        <a class="nav-link" href="/profile/{{data.id}}">Profile </a>
+		        <a class="nav-link" href="/profile/driver/{{data.id}}">Profile </a>
 		      </li>
 		      <li class="nav-item active">
 		        <a class="nav-link" href="/showDrives/{{data.id}}">Your Drive<span class="sr-only">(current)</span></a>
@@ -38,8 +38,8 @@
 <div class="row" style="text-align:center;">
 {{#transferride}}
 	<div class="card text-white bg-info mb-3" style="width:100em; text-align:center" >
-  <div class="card-header"><strong > You have Riders !! select Map to pick them</strong> <button type="button"  class="btn btn-success btn-lg" name="button"><a style="color:white;" href="/showDrives/delete/{{_id}}?driverid={{data.id}}">Cancel My Drive</a></button>
-		<button type="button"  class="btn btn-success btn-lg" name="button"><a style="color:white;" href="https://www.google.com/maps/dir/?api=1&orign={{locationfrom}}&destination={{locationto}}&travelmode=driving&waypoints=({{locationfrom}}{{#rider}}{{^transfer}}|{{address}}{{/transfer}}{{/rider}})&dir_action=navigate" target="_blank">Map</a></button>
+  <div class="card-header"><strong > You have Riders !! select Map to pick them</strong> <button type="button"  class="btn btn-danger btn-lg" name="button"><a style="color:white; text-decoration:none;" href="/showDrives/delete/{{_id}}?driverid={{data.id}}">Cancel My Drive</a></button>
+		<button type="button"  class="btn btn-warning btn-lg" name="button"><a style="color:white;text-decoration:none;" href="https://www.google.com/maps/dir/?api=1&orign={{locationfrom}}&destination={{locationto}}&travelmode=driving&waypoints=({{locationfrom}}{{#rider}}{{^transfer}}|{{address}}{{/transfer}}{{/rider}})&dir_action=navigate" target="_blank">Map</a></button>
 </div>
 
 	<div class="card-body">
@@ -79,7 +79,7 @@
 {{#myresult}}
 	<div class="card text-white bg-dark mb-3" style="width:100em; text-align:center" >
   <div class="card-header">Destination : {{locationto}}
-		<button type="button"  class="btn btn-success btn-lg" name="button"><a style="color:white;" href="/showDrives/delete/{{_id}}?driverid={{data.id}}">Cancel My Drive</a></button>
+		<button type="button"  class="btn btn-success btn-lg" name="button"><a style="color:white; text-decoration:none;" href="/showDrives/delete/{{_id}}?driverid={{data.id}}">Cancel My Drive</a></button>
 	</div>
   <div class="card-body">
 		<h5 class="card-title">

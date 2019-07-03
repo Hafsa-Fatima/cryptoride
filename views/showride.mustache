@@ -4,7 +4,7 @@
 
 <body class="container-fluid">
 	<nav class="navbar row navbar-expand-lg navbar-dark bg-primary">
-		  <a class="navbar-brand" href="#"><b>CRYPTO</b>RIDE</a>
+		  <a class="navbar-brand" href="/profile/rider/{{data.id}}"><b>CRYPTO</b>RIDE</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -15,7 +15,7 @@
 						<a class="nav-link" href="/profile/rider/{{data.id}}">Profile <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="/showDrives/rides/{{data.id}}?name={{data.name}}">Your Drive</a>
+						<a class="nav-link" href="/showDrives/rides/{{data.id}}?name={{data.name}}">Rides</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/">Signout</a>
@@ -28,7 +28,7 @@
 	<div class="row">
 
 		<div class="col" style="text-align:center;">
-			<h1>{{data.title}}</h1>
+			<h1>Rides</h1>
 			<hr />
 		</div>
 	</div>
@@ -38,7 +38,7 @@
 	{{#allmyride}}
 		<div  class="card border-success mb-3 card bg-light" style="width:100em; text-align:center" >
 	  <div class="card-header card-title"><strong class="text-success">Ride Successfully Selected</strong> &nbsp;
-			<button type="button" style="color:white;" class="btn btn-danger btn-lg" name="button"><a style="color:white;" href="/chooseDrive/delete/{{_id}}?driverid={{driverid}}&riderid={{data.id}}">Cancel Ride</a></button>
+			<button type="button" style="color:white;" class="btn btn-danger btn-lg" name="button"><a style="text-decoration:none; color:white;" href="/chooseDrive/delete/{{_id}}?driverid={{driverid}}&riderid={{data.id}}">Cancel Ride</a></button>
 			<h5><strong> CarLicense : </strong> {{carliciense}} &nbsp;</h5>
 		</div>
 	  <div class="card-body">
@@ -72,7 +72,7 @@
 					<form class="" action="/chooseDrive/verify/{{data.id}}?_id={{_id}}" method="post">
 				<div class="row">
 							<div class="col-sm-6" style="text-align:right">
-								<input size="6" type="text" name="optnumber" class="form-control" aria-describedby="emailHelp" placeholder="Enter opt" >
+								<input size="6" type="text" name="optnumber" class="form-control" aria-describedby="emailHelp" placeholder="Enter opt" required>
 							</div>
 							<div class="col-sm-6" style="text-align:left">
 									<button class="btn btn-success btn-lg" type="submit" name="button">Verify and Pay {{cost}} Coins </button>
@@ -92,7 +92,7 @@
 {{#myresult}}
 	<div class="card text-white bg-primary mb-3" style="width:100em; text-align:center" >
   <h5 class="card-header card-title"><strong>Destination :</strong> {{locationto}} &nbsp;
-		<button type="button"  class="btn btn-success btn-lg" name="button"><a style="color:white;" href="/chooseDrive/{{_id}}?driverid={{driverid}}&riderid={{data.id}}&name={{data.name}}">Choose Ride</a></button>
+		<button type="button"  class="btn btn-success btn-lg" name="button"><a style="color:white;text-decoration:none;" href="/chooseDrive/{{_id}}?driverid={{driverid}}&riderid={{data.id}}&name={{data.name}}">Choose Ride</a></button>
 	</h5>
 	<h5 class="card-title">
 		<div class="row">
