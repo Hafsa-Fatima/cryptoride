@@ -117,13 +117,13 @@ router.post('/addDrive/:id',(req, res) => {
 	var dataString = '{"jsonrpc": "1.0", "id":"curltest", "method": "getnewaddress", "params": [] }';
 
 	var options = {
-	    url: 'http://127.0.0.1:9032/',
+	    url: 'http://127.0.0.1:'+process.env.KOMODO_PORT+'/',
 	    method: 'POST',
 	    headers: headers,
 	    body: dataString,
 	    auth: {
-	        'user': 'user2863247190',
-	        'pass': 'passcd362862e2d5d2d752a123857dbba0474cd48a55af419c022b1f59a2c21aecab5a'
+	        'user': process.env.KOMODO_USER,
+	        'pass': process.env.KOMODO_PASSWORD
 	    }
 	};
 
