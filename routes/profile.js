@@ -51,7 +51,7 @@ router.get('/driver/:id', (req, res) => {
 				    if (!error && response.statusCode == 200) {
 				        // res.render('profile',{data,a,result})
 								let a = JSON.parse(body)
-								let balance = a.result.balance + a.result.unconfirmed_balance -1999918.00
+								let balance = a.result.balance + a.result.unconfirmed_balance 
 								res.render('profile',{data,balance,result})
 
 				    }
@@ -112,7 +112,7 @@ router.get('/rider/:id', (req, res) => {
 						let v = result
 
 						let a = JSON.parse(body)
-						let balance = a.result.balance + a.result.unconfirmed_balance - 1999918.00
+						let balance = a.result.balance + a.result.unconfirmed_balance
 							let p = {data,v,balance}
 						// console.log(p);
 						res.render('profilerider',p)
